@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <header>
+        <h1>Checkout</h1>
+        <a href="index.html">Home</a>
+    </header>
+
+    <div class="container">
+        <section id="summary">
+            <h2>Summary</h2>
+            <p>Movie Title: <span id="movieTitle"></span></p>
+            <p>Price per Ticket: <span id="moviePrice"></span></p>
+            <p>Quantity: <input type="number" id="quantity" value="1" min="1"></p>
+            <p>Convenience Fee (1.75%): <span id="convenienceFee">0.00</span></p>
+            <p>Total: <span id="totalPrice">0.00</span></p>
+        </section>
+
+        <div class="payment-section">
+            <h2>Payment</h2>
+            <form id="paymentForm" class="paymentform">
+                <div class="userform" class="userform">
+                    <label for="username">Name:</label>
+                    <input type="text" id="username" required>
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" required maxlength="10">
+                </div>
+                <div>
+                    <h3>Select Payment Method:</h3>
+                    <label for="debit_card">Debit Card</label>
+                    <input type="radio" id="debit_card" name="paymentMethod" value="debit_card">
+                    <label for="credit_card">Credit Card</label>
+                    <input type="radio" id="credit_card" name="paymentMethod" value="credit_card">
+                    <label for="upi">UPI</label>
+                    <input type="radio" id="upi" name="paymentMethod" value="upi">
+                </div>
+                
+                <div id="debitCreditForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number: </label>
+                        <input type="text" id="cardNumber" required placeholder="XXXX XXXX XXXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="cardHolderName">Card Holder's Name:</label>
+                        <input type="text" id="cardHolderName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date (MM/YY):</label>
+                        <input type="text" id="expiryDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" required maxlength="3">
+                    </div>
+                    <button type="submit" id="completePurchase">Complete Purchase</button>
+                </div>
+                
+                <div id="upiForm" style="display: none;">
+                    <h3>Select UPI Service:</h3>
+                    <label for="googlePay">Google Pay</label>
+                    <input type="radio" id="googlePay" name="upiService" value="google_pay" required>
+                    <label for="paytm">Paytm</label>
+                    <input type= "radio" id="paytm" name="upiService" value="paytm" required>
+                    <label for="phonePe">PhonePe</label>
+                    <input type="radio" id="phonePe" name="upiService" value="phone_pe" required>                    
+                    <div class="form-group">
+                        <label for="upiPhoneNumber">UPI Phone Number:</label>
+                        <input type="text" id="upiPhoneNumber" required maxlength="10">
+                    </div>
+                    <button type="submit" id="completePurchase">Complete Purchase</button>
+                </div>
+                 
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Popup -->
+    <div id="successPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closePopup">&times;</span>
+            <p>Payment successful! Ticket has been booked.</p>
+        </div>
+    </div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
